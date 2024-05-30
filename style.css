@@ -1,0 +1,104 @@
+ .dropdown {
+     background-color: black;
+     color: white;
+     padding: 15px;
+     font-size: 15px;
+     font-style: normal;
+     border-radius: 6px;
+     width: 150px;
+ }
+
+ .dropdown option {
+     background-color: whitesmoke;
+     color: black;
+ }
+
+ .dropdown .hr-option {
+     color: black;
+ }
+
+  .nav-link {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+  }
+
+         hr {
+             border: none;
+             border-top: 2px solid black;
+         }
+
+                  .foot {
+                      color: white;
+                      background-color: black;
+                  }
+
+                                        body {
+                                            background-color: whitesmoke;
+                                        }
+
+
+
+
+
+                                           body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h5 {
+         
+            color: black;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .section h2 {
+            color: #ff6600;
+            font-size: 1.5em;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+   
+}
+
+.social-icons img {
+    width: 40px;
+    height: auto;
+}
+
+
+.social-icons a:hover img {
+    transform: scale(1.2);
+   
+}
+
+

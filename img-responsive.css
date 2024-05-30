@@ -1,0 +1,24 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+
+
+    .image-container img {
+        height: auto;
+        width: 100%;
+    }
+
+
+    .text-container {
+        text-align: center;
+    }
+
+    .banner-container {
+        border: 2px solid black;
+        padding: 10px;
+    }
+}
