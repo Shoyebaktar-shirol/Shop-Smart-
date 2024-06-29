@@ -8,14 +8,10 @@
     <link rel="stylesheet" type="text/css" href="img-responsive.css" />
   </head>
   <body>
-    <nav style="background-color: black; color: white; padding: 10px">
-      <select
-        class="dropdown"
-        onchange="location = this.value;"
-        style="margin-right: 20px; padding: 5px"
-      >
-        <option value="option" style="color: black">Products</option>
-        <option value="featured products.html">Featured Products</option>
+<nav style="background-color: black; color: white; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+    <select class="dropdown" onchange="location = this.value;" style="padding: 5px; margin-right: 20px;">
+        <option value="option" style="color: black;">Products</option>
+        <option value="featured-products.html">Featured Products</option>
         <option class="hr-option" disabled="disabled">───────────</option>
         <option value="shoes.html">Shoes</option>
         <option class="hr-option" disabled="disabled">───────────</option>
@@ -27,40 +23,40 @@
         <option class="hr-option" disabled="disabled">───────────</option>
         <option value="cloths.html">Cloths</option>
         <option class="hr-option" disabled="disabled">───────────</option>
-        <option value="arts and crafts.html">Arts and Crafts</option>
+        <option value="arts-and-crafts.html">Arts and Crafts</option>
         <option class="hr-option" disabled="disabled">───────────</option>
-        <option value="bikes and trikes.html">Bikes and Trikes</option>
+        <option value="bikes-and-trikes.html">Bikes and Trikes</option>
         <option class="hr-option" disabled="disabled">───────────</option>
-      </select>
-      <a
-        href="shoes home.html"
-        style="color: white; margin-right: 25px; margin-left: 100px"
-        ><b>Home</b></a
-      >
-      <a href="about smartshop.html" style="color: white; margin-right: 25px"
-        ><b>About Smartshop</b></a
-      >
-      <a href="contact.html" style="color: white; margin-right: 25px"
-        ><b>Contact Us</b></a
-      >
-      <a href="registration.html" style="color: white; margin-right: 25px"
-        ><b>Create a/c</b></a
-      >
-      <a href="log in form.html" style="color: red; margin-right: 25px"
-        ><b>Login</b></a
-      >
-      <form class="form-inline" style="float: right">
-        <input
-          type="text"
-          placeholder="Search"
-          style="padding: 5px; margin-right: 5px"
-        />
-      </form>
-    </nav>
+    </select>
+    <a href="shoes-home.html" style="color: white; margin-right: 25px;"><b>Home</b></a>
+    <a href="about-smartshop.html" style="color: white; margin-right: 25px;"><b>About Smartshop</b></a>
+    <a href="contact.html" style="color: white; margin-right: 25px;"><b>Contact Us</b></a>
+    <a href="registration.html" style="color: white; margin-right: 25px;"><b>Create an Account</b></a>
+    <a href="log-in-form.html" style="color: red; margin-right: 25px;"><b>Login</b></a>
+    <form class="search-form" style="display: flex; align-items: center;">
+        <input type="text" placeholder="Search" style="padding: 5px; margin-right: 5px;">
+    </form>
+</nav>
+
 
     <br /><br />
     <center>
-      <h2><b>Welcome To Shop Smart</b></h2>
+      <h2
+        style="
+          font-size: 2em;
+          text-align: center;
+          background: linear-gradient(to right, red, #fad0c4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          display: inline-block;
+          padding: 10px 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+        "
+      >
+        Welcome To Shop Smart
+      </h2>
     </center>
     <br /><br /><br />
 
