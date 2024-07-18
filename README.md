@@ -4,6 +4,7 @@ Welcome to the Shop Smart E-Commerce Website repository. Shop Smart is a user-fr
 E commerce website that helps to finding a perticular products.
 <br>
 
+## Deployed Link - https://shopsmart.netlify.app/
 ## Technologies Used
 
 - HTML
