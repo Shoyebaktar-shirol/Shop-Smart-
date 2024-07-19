@@ -1,87 +1,144 @@
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrationshop";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$showModal = false;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstName = $_POST['first_name'];
+    $lastName = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
+
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, gender, address) VALUES ('$firstName', '$lastName', '$email', '$phone', '$gender', '$address')";
+
+    if ($conn->query($sql) === TRUE) {
+        $showModal = true;
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="Registration.css">
-    <title>Create Account</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Create Account</h1>
-        <form id="registration-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label for="fname">First Name:</label>
-            <input type="text" placeholder="First Name" id="fname" name="fname" required />
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" placeholder="Last Name" name="lname" required />
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="abc@gmail.com" name="email" required />
-            <label for="password">Create Password:</label>
-            <input type="password" id="password" placeholder="Create Password" name="password" required />
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required />
-            <label>Gender:</label>
-            <input type="radio" name="gender" id="male" value="male" required />
-            <label for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female" required />
-            <label for="female">Female</label>
-            <br><label for="phone">Phone:</label>
-            <input type="tel" id="phone" placeholder="Phone" name="phone" required /><br>
-            <label for="address">Address:</label>
-            <input type="text" id="address" placeholder="Address" name="address" required />
-            <div class="btn-container">
-                <button type="submit" class="btn btn-submit">Submit</button>
-                <button type="reset" class="btn btn-reset">Reset</button>
+        <h2 class="text-center">Registration Form</h2>
+        <form method="POST" action="registration.php">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
             </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
     </div>
 
-    <script>
-        document.getElementById("registration-form").addEventListener("submit", function (event) {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Thank you for the registration. Your data has been successfully stored in the database.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                alert("Passwords do not match!");
-            }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            <?php if ($showModal) : ?>
+                $('#successModal').modal('show');
+            <?php endif; ?>
         });
     </script>
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $servername = "localhost";
-        $username = "root"; // default username
-        $password = ""; // default password
-        $dbname = "registrationshop"; // updated database name
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $fname = $_POST["fname"];
-        $lname = $_POST["lname"];
-        $email = $_POST["email"];
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
-        $gender = $_POST["gender"];
-        $phone = $_POST["phone"];
-        $address = $_POST["address"];
-
-        $sql = "INSERT INTO users (fname, lname, email, password, gender, phone, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssss", $fname, $lname, $email, $password, $gender, $phone, $address);
-
-        if ($stmt->execute()) {
-            echo '<script>alert("New record created successfully");</script>';
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-
-        $stmt->close();
-        $conn->close();
-    }
-    ?>
 </body>
 </html>
