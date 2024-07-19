@@ -1,3 +1,38 @@
+<!--  <?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "registrationshop";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$showModal = false;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstName = $_POST['first_name'];
+    $lastName = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
+
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, gender, address) VALUES ('$firstName', '$lastName', '$email', '$phone', '$gender', '$address')";
+
+    if ($conn->query($sql) === TRUE) {
+        $showModal = true;
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,40 +69,15 @@
             background-color: #0056b3;
             border-color: #0056b3;
         }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-links li {
-            display: inline;
-            margin: 0 10px;
-        }
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .footer-links a:hover {
-            text-decoration: underline;
+        .alert {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center">Registration Form</h2>
-        <form id="registrationForm">
+        <form method="POST" action="registration.php">
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -100,16 +110,38 @@
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
     </div>
-
+<!-- 
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Thank you for the registration. Your data has been successfully stored in the database.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            alert('Thank you for registration!');
+        $(document).ready(function() {
+            <?php if ($showModal) : ?>
+                $('#successModal').modal('show');
+            <?php endif; ?>
         });
     </script>
 </body>
-</html>
+</html> 
+
+ -->
 
