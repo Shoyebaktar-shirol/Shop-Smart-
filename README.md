@@ -38,25 +38,22 @@ Shop Smart is a responsive e-commerce template that allows users to browse and p
 
 
 ## Structure of ShopSmart
-
 /shopsmart
 │
-├── index.html           # Main HTML file
-├── styles.css           # Stylesheet for the website
-├── script.js            # JavaScript file for interactivity
-├── /images              # Folder for images (e.g., product images, banner images)
-│   ├── banner.jpg
-│   ├── product1.jpg
-│   └── product2.jpg
+├── index.html # Main HTML file
+├── styles.css # Stylesheet for the website
+├── script.js # JavaScript file for interactivity
+├── /images # Folder for images (e.g., product images, banner images)
+│ ├── banner.jpg
+│ ├── product1.jpg
+│ └── product2.jpg
 │
-├── /bootstrap           # Bootstrap framework files (if included manually)
-│   └── bootstrap.min.css
+├── /bootstrap # Bootstrap framework files (if included manually)
+│ └── bootstrap.min.css
 │
-├── /vendor              # Additional vendor files (if any)
+├── /vendor # Additional vendor files (if any)
 │
-└── README.md            # Project documentation
-
-
+└── README.md # Project documentation
 
 ## Contact
 
