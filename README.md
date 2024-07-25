@@ -61,7 +61,7 @@ Shop Smart is a responsive e-commerce template that allows users to browse and p
 
 For any inquiries or feedback, please contact:
 
-- **Email:** your.shoyebaktarshirol@gmail.com.com
+- **Email:** shoyebaktarshirol@gmail.com.com
 - **GitHub:** [shoyebaktar shirol](https://github.com/yourusernam)
 
 ---
