@@ -55,6 +55,8 @@ Shop Smart is a responsive e-commerce template that allows users to browse and p
 │
 └── README.md # Project documentation
 
+
+
 ## Contact
 
 For any inquiries or feedback, please contact:
