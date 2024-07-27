@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat & FAQ</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      /* Live Chat Widget Styles */
+      #live-chat-widget {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+        z-index: 1000;
+      }
+
+      #chat-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      #chat-box {
+        display: none;
+        position: absolute;
+        bottom: 50px;
+        right: 0;
+        width: 300px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        z-index: 1001;
+      }
+
+      .chat-header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .chat-body {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+      }
+
+      .chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+      }
+
+      #chat-input {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        width: calc(100% - 60px);
+        margin-right: 10px;
+      }
+
+      #send-message {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      #send-message:hover {
+        background-color: #0056b3;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* FAQ Section Styles */
+      #faq {
+        margin: 20px 0;
+      }
+
+      .faq-item {
+        margin-bottom: 10px;
+      }
+
+      .faq-question {
+        cursor: pointer;
+        background-color: #f1f1f1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-top: none;
+      }
+
+      .faq-answer p {
+        margin: 0;
+      }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3 class="faq-question">What is your return policy?</h3>
+                <div class="faq-answer">
+                    <p>Our return policy allows for returns within 30 days of receipt. Please visit our returns page for more details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I track my order?</h3>
+                <div class="faq-answer">
+                    <p>You can track your order using the tracking number provided in the confirmation email. Visit our tracking page for more information.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do you offer international shipping?</h3>
+                <div class="faq-answer">
+                    <p>Yes, we offer international shipping. Shipping costs and delivery times vary by location. Please check our shipping policy for more details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I cancel my order?</h3>
+                <div class="faq-answer">
+                    <p>Orders can be canceled within 24 hours of placing them. Please contact our support team as soon as possible to request a cancellation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What payment methods do you accept?</h3>
+                <div class="faq-answer">
+                    <p>We accept various payment methods including credit/debit cards, PayPal, and other online payment options. Check our payment page for more details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Can I change my delivery address after placing an order?</h3>
+                <div class="faq-answer">
+                    <p>Address changes can be made within 24 hours of placing the order. Please contact our customer support team as soon as possible.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do you offer gift cards?</h3>
+                <div class="faq-answer">
+                    <p>Yes, we offer gift cards that can be purchased online. Visit our gift card page for more information.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I return an item?</h3>
+                <div class="faq-answer">
+                    <p>To return an item, please follow the instructions on our returns page. Make sure to have your order number and follow the guidelines for a smooth process.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What should I do if I received a damaged or defective item?</h3>
+                <div class="faq-answer">
+                    <p>If you receive a damaged or defective item, please contact our support team immediately. We will provide instructions for returning the item and issuing a replacement or refund.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I contact customer support?</h3>
+                <div class="faq-answer">
+                    <p>You can contact our customer support team via email, phone, or live chat. Visit our contact page for more details.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Live Chat Widget -->
+    <div id="live-chat-widget">
+        <button id="chat-button">Chat with us</button>
+        <div id="chat-box" class="hidden">
+            <div class="chat-header">
+                <span>Live Chat</span>
+                <button id="close-chat" style="background-color: transparent; color: #fff; border: none; cursor: pointer;">&times;</button>
+            </div>
+            <div class="chat-body">
+                <div id="chat-messages" class="chat-messages"></div>
+                <div>
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Live Chat Widget
+      document.getElementById('chat-button').addEventListener('click', function() {
+          document.getElementById('chat-box').classList.toggle('hidden');
+      });
+
+      document.getElementById('close-chat').addEventListener('click', function() {
+          document.getElementById('chat-box').classList.add('hidden');
+      });
+
+      document.getElementById('send-message').addEventListener('click', function() {
+          const messageInput = document.getElementById('chat-input');
+          const messageText = messageInput.value;
+          
+          if (messageText.trim()) {
+              const messageElement = document.createElement('div');
+              messageElement.textContent = messageText;
+              document.getElementById('chat-messages').appendChild(messageElement);
+              messageInput.value = '';
+              document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+          }
+      });
+
+      // FAQ Section Toggle
+      document.querySelectorAll('.faq-question').forEach(function(question) {
+          question.addEventListener('click', function() {
+              const answer = this.nextElementSibling;
+              if (answer.style.display === 'block') {
+                  answer.style.display = 'none';
+              } else {
+                  answer.style.display = 'block';
+              }
+          });
+      });
+    </script>
+</body>
+</html>
