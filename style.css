@@ -102,3 +102,86 @@
 }
 
 
+
+/* Animation code */
+
+/* Animation images section code below */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.text-container {
+    padding: 20px;
+    background: #333;
+    color: white;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 700px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 700px;
+    /* Adjust width as needed */
+    height: 300px;
+    /* Adjust height to match image size */
+    overflow: hidden;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+.carousel {
+    display: flex;
+    width: 600%;
+    /* Adjust based on the number of images */
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel img {
+    width: 700px;
+    /* Adjust width as needed */
+    height: 300px;
+    /* Adjust height to match image size */
+    object-fit: cover;
+}
+
+.nav-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: all;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.nav-arrows button {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 24px;
+    pointer-events: all;
+}
+
+.nav-arrows button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Remove pagination styles completely */
+.pagination {
+    display: none;
+    /* Hide pagination */
+}
+/* animaton code ends */
+
